@@ -1,15 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="theme-color" content="#0B0E14">
-    <title>MapClinics Pro - Geoapify</title>
+    <title>MapClinics Pro - بحث احترافي عن الأماكن</title>
+    
+    <!-- Google Fonts - Arabic -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Ionicons -->
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
@@ -32,6 +36,7 @@
             --neon-pink: #FF2D55;
             --neon-pink-dim: rgba(255, 45, 85, 0.1);
             --neon-orange: #FF9F0A;
+            --neon-yellow: #FFD60A;
             --border-color: rgba(255, 255, 255, 0.08);
             --border-glow: rgba(255, 255, 255, 0.12);
             --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.5);
@@ -45,7 +50,7 @@
             --radius-xs: 8px;
             --transition-fast: 0.2s cubic-bezier(0.25, 0.1, 0.25, 1);
             --transition-smooth: 0.35s cubic-bezier(0.25, 0.1, 0.25, 1);
-            --font-system: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', 'Segoe UI', sans-serif;
+            --font-arabic: 'Cairo', 'Tajawal', -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
         }
 
         * {
@@ -58,17 +63,21 @@
         }
 
         body {
-            font-family: var(--font-system);
+            font-family: var(--font-arabic);
             background: var(--bg-primary);
             color: var(--text-primary);
             overflow-x: hidden;
             min-height: 100vh;
             min-height: 100dvh;
+            background-image: 
+                radial-gradient(ellipse at 20% 20%, rgba(0, 255, 170, 0.03) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(180, 76, 255, 0.03) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(0, 212, 255, 0.02) 0%, transparent 50%);
         }
 
         ::-webkit-scrollbar {
-            width: 4px;
-            height: 4px;
+            width: 3px;
+            height: 3px;
         }
         ::-webkit-scrollbar-track {
             background: transparent;
@@ -78,15 +87,17 @@
             border-radius: 10px;
         }
 
+        /* Container */
         .app-container {
             max-width: 680px;
             margin: 0 auto;
-            padding: 20px 16px 40px;
+            padding: 16px 12px 40px;
+            min-height: 100dvh;
         }
 
-        /* Enhanced Header */
+        /* Header */
         .app-header {
-            padding: 16px 0 24px;
+            padding: 10px 0 20px;
             text-align: center;
         }
         .app-logo-wrapper {
@@ -94,12 +105,12 @@
             align-items: center;
             justify-content: center;
             position: relative;
-            margin-bottom: 16px;
+            margin-bottom: 12px;
         }
         .app-logo-ring {
             position: absolute;
-            width: 80px;
-            height: 80px;
+            width: 70px;
+            height: 70px;
             border-radius: 50%;
             border: 2px solid rgba(0, 255, 170, 0.2);
             animation: ringPulse 2s ease-in-out infinite;
@@ -109,58 +120,58 @@
             50% { transform: scale(1.1); opacity: 1; }
         }
         .app-logo-icon {
-            width: 56px;
-            height: 56px;
+            width: 50px;
+            height: 50px;
             background: linear-gradient(135deg, #00FFAA, #00D4FF);
-            border-radius: 16px;
+            border-radius: 15px;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 0 40px rgba(0, 255, 170, 0.4);
+            box-shadow: 0 0 35px rgba(0, 255, 170, 0.4);
             position: relative;
             z-index: 1;
         }
         .app-logo-icon ion-icon {
-            font-size: 28px;
+            font-size: 24px;
             color: #0B0E14;
         }
         .app-title {
-            font-size: 32px;
+            font-size: 28px;
             font-weight: 800;
             letter-spacing: -0.5px;
             background: linear-gradient(135deg, #FFFFFF 0%, #C8CDD4 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 4px;
+            margin-bottom: 2px;
         }
         .app-subtitle {
-            font-size: 13px;
+            font-size: 12px;
             color: var(--text-secondary);
             font-weight: 400;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.3px;
         }
         .provider-badge {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            padding: 6px 14px;
+            padding: 5px 12px;
             border-radius: 20px;
             background: rgba(255, 159, 10, 0.1);
             border: 1px solid rgba(255, 159, 10, 0.3);
-            font-size: 11px;
+            font-size: 10px;
             color: var(--neon-orange);
             font-weight: 500;
             margin-top: 8px;
         }
 
-        /* Glass Card Enhanced */
+        /* Glass Card */
         .glass-card {
             background: var(--bg-card);
             border: 1px solid var(--border-color);
             border-radius: var(--radius-lg);
-            padding: 20px;
-            margin-bottom: 16px;
+            padding: 18px;
+            margin-bottom: 14px;
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             box-shadow: var(--shadow-md);
@@ -179,13 +190,13 @@
         .card-header {
             display: flex;
             align-items: center;
-            gap: 12px;
-            margin-bottom: 18px;
+            gap: 10px;
+            margin-bottom: 16px;
         }
         .card-header-icon {
-            width: 38px;
-            height: 38px;
-            border-radius: 12px;
+            width: 34px;
+            height: 34px;
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -194,31 +205,126 @@
         .card-header-icon.green { background: var(--neon-green-dim); color: var(--neon-green); }
         .card-header-icon.cyan { background: var(--neon-cyan-dim); color: var(--neon-cyan); }
         .card-header-icon.purple { background: var(--neon-purple-dim); color: var(--neon-purple); }
-        .card-header-icon ion-icon { font-size: 18px; }
+        .card-header-icon ion-icon { font-size: 16px; }
         .card-label {
-            font-size: 11px;
+            font-size: 10px;
             color: var(--text-tertiary);
             text-transform: uppercase;
             letter-spacing: 1px;
             font-weight: 600;
         }
         .card-title {
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 600;
             letter-spacing: -0.2px;
             color: var(--text-primary);
         }
 
-        /* Buttons Enhanced */
+        /* Hero Search */
+        .hero-search {
+            position: relative;
+            margin-bottom: 14px;
+        }
+        .hero-input-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+            background: var(--bg-card);
+            border: 1.5px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 4px;
+            transition: all var(--transition-fast);
+            box-shadow: 0 0 0 rgba(0, 255, 170, 0);
+        }
+        .hero-input-wrapper:focus-within {
+            border-color: var(--neon-green);
+            box-shadow: 0 0 25px rgba(0, 255, 170, 0.2);
+        }
+        .hero-input-icon {
+            padding: 0 12px;
+            color: var(--neon-green);
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+        }
+        .hero-input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: var(--text-primary);
+            font-family: var(--font-arabic);
+            font-size: 15px;
+            padding: 14px 0;
+            outline: none;
+            direction: rtl;
+            text-align: right;
+        }
+        .hero-input::placeholder {
+            color: var(--text-tertiary);
+            font-family: var(--font-arabic);
+        }
+        .hero-submit-btn {
+            padding: 12px 20px;
+            margin: 4px;
+            border-radius: var(--radius-sm);
+            background: linear-gradient(135deg, rgba(0, 255, 170, 0.2), rgba(0, 212, 255, 0.2));
+            border: 1px solid var(--neon-green);
+            color: var(--neon-green);
+            font-family: var(--font-arabic);
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all var(--transition-fast);
+        }
+        .hero-submit-btn:hover {
+            background: linear-gradient(135deg, rgba(0, 255, 170, 0.35), rgba(0, 212, 255, 0.35));
+            box-shadow: var(--shadow-neon-green);
+        }
+        .hero-submit-btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+        .keyword-suggestions {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+        .keyword-tag {
+            padding: 6px 14px;
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            background: rgba(255,255,255,0.02);
+            font-family: var(--font-arabic);
+            font-size: 11px;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            white-space: nowrap;
+        }
+        .keyword-tag:hover {
+            border-color: var(--neon-cyan);
+            color: var(--neon-cyan);
+            background: var(--neon-cyan-dim);
+        }
+        .keyword-tag.active {
+            background: var(--neon-green-dim);
+            border-color: var(--neon-green);
+            color: var(--neon-green);
+            font-weight: 600;
+        }
+
+        /* Buttons */
         .btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
-            padding: 13px 22px;
+            gap: 6px;
+            padding: 12px 18px;
             border-radius: var(--radius-sm);
-            font-family: var(--font-system);
-            font-size: 14px;
+            font-family: var(--font-arabic);
+            font-size: 13px;
             font-weight: 600;
             letter-spacing: -0.2px;
             border: 1.5px solid transparent;
@@ -228,93 +334,88 @@
             white-space: nowrap;
             user-select: none;
             flex: 1;
-            min-width: 120px;
+            min-width: 100px;
         }
         .btn-primary {
             background: rgba(0, 255, 170, 0.1);
             border-color: var(--neon-green);
             color: var(--neon-green);
-            box-shadow: 0 0 20px rgba(0, 255, 170, 0.1);
         }
-        .btn-primary:hover { background: rgba(0, 255, 170, 0.2); box-shadow: var(--shadow-neon-green); transform: translateY(-2px); }
+        .btn-primary:hover { background: rgba(0, 255, 170, 0.2); box-shadow: var(--shadow-neon-green); transform: translateY(-1px); }
         .btn-cyan {
             background: rgba(0, 212, 255, 0.1);
             border-color: var(--neon-cyan);
             color: var(--neon-cyan);
-            box-shadow: 0 0 20px rgba(0, 212, 255, 0.1);
         }
-        .btn-cyan:hover { background: rgba(0, 212, 255, 0.2); box-shadow: var(--shadow-neon-cyan); transform: translateY(-2px); }
-        .btn-purple {
-            background: rgba(180, 76, 255, 0.1);
-            border-color: var(--neon-purple);
-            color: var(--neon-purple);
-            box-shadow: 0 0 20px rgba(180, 76, 255, 0.1);
-        }
-        .btn-purple:hover { background: rgba(180, 76, 255, 0.2); box-shadow: var(--shadow-neon-purple); transform: translateY(-2px); }
+        .btn-cyan:hover { background: rgba(0, 212, 255, 0.2); box-shadow: var(--shadow-neon-cyan); transform: translateY(-1px); }
         .btn-danger {
             background: var(--neon-pink-dim);
             border-color: var(--neon-pink);
             color: var(--neon-pink);
         }
-        .btn-danger:hover { background: rgba(255, 45, 85, 0.2); box-shadow: 0 0 30px rgba(255, 45, 85, 0.3); transform: translateY(-2px); }
-        .btn-block { width: 100%; justify-content: center; }
+        .btn-danger:hover { background: rgba(255, 45, 85, 0.2); box-shadow: 0 0 30px rgba(255, 45, 85, 0.3); }
+        .btn-block { width: 100%; }
         .btn:disabled { opacity: 0.4; cursor: not-allowed; pointer-events: none; }
-        .btn-row { display: flex; gap: 10px; flex-wrap: wrap; }
+        .btn-row { display: flex; gap: 8px; flex-wrap: wrap; }
         .btn-row .btn { flex: 1; }
 
-        /* Chips Enhanced */
-        .chip-scroll {
+        /* Filter Toggle Row */
+        .filter-toggle-row {
             display: flex;
             gap: 8px;
+            margin-bottom: 12px;
             flex-wrap: wrap;
-            margin-bottom: 16px;
         }
-        .chip {
-            padding: 10px 18px;
-            border-radius: 24px;
+        .filter-toggle {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 16px;
+            border-radius: 25px;
             border: 1.5px solid var(--border-color);
             background: rgba(255,255,255,0.02);
-            font-family: var(--font-system);
-            font-size: 13px;
+            font-family: var(--font-arabic);
+            font-size: 12px;
             font-weight: 500;
             color: var(--text-secondary);
             cursor: pointer;
             transition: all var(--transition-fast);
             white-space: nowrap;
         }
-        .chip:hover { border-color: var(--border-glow); color: var(--text-primary); background: rgba(255,255,255,0.04); }
-        .chip.active {
-            background: var(--neon-green-dim);
-            border-color: var(--neon-green);
-            color: var(--neon-green);
-            box-shadow: 0 0 20px rgba(0, 255, 170, 0.2);
-            font-weight: 600;
+        .filter-toggle.active {
+            background: var(--neon-purple-dim);
+            border-color: var(--neon-purple);
+            color: var(--neon-purple);
+            box-shadow: 0 0 20px rgba(180, 76, 255, 0.2);
+        }
+        .filter-toggle ion-icon {
+            font-size: 16px;
         }
 
-        /* Slider Enhanced */
-        .slider-group { margin-bottom: 18px; }
+        /* Slider */
+        .slider-group { margin-bottom: 14px; }
         .slider-label {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 10px;
-            font-size: 13px;
+            margin-bottom: 8px;
+            font-size: 12px;
             color: var(--text-secondary);
             font-weight: 500;
         }
         .slider-value {
             color: var(--neon-green);
             font-weight: 700;
-            font-size: 16px;
+            font-size: 14px;
             background: var(--neon-green-dim);
-            padding: 5px 12px;
-            border-radius: 10px;
+            padding: 4px 10px;
+            border-radius: 8px;
             border: 1px solid rgba(0, 255, 170, 0.2);
         }
         input[type="range"] {
             -webkit-appearance: none;
             width: 100%;
-            height: 6px;
+            height: 5px;
             border-radius: 3px;
             background: rgba(255,255,255,0.08);
             outline: none;
@@ -322,8 +423,8 @@
         }
         input[type="range"]::-webkit-slider-thumb {
             -webkit-appearance: none;
-            width: 26px;
-            height: 26px;
+            width: 24px;
+            height: 24px;
             border-radius: 50%;
             background: #0B0E14;
             cursor: pointer;
@@ -331,62 +432,40 @@
             box-shadow: 0 0 25px rgba(0, 255, 170, 0.5);
             transition: all var(--transition-fast);
         }
-        input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.15); }
 
-        /* Country Select Enhanced */
-        .country-select { position: relative; }
-        .country-trigger {
+        /* Country Chips */
+        .country-chips {
             display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 13px 16px;
-            border-radius: var(--radius-sm);
-            border: 1.5px solid var(--border-color);
-            background: rgba(255,255,255,0.02);
-            cursor: pointer;
-            transition: all var(--transition-fast);
-            width: 100%;
+            gap: 6px;
+            flex-wrap: wrap;
+            margin-top: 8px;
         }
-        .country-trigger:hover { border-color: var(--neon-cyan); background: rgba(0, 212, 255, 0.05); }
-        .country-trigger span { font-size: 14px; font-weight: 500; }
-        .country-trigger ion-icon { color: var(--text-tertiary); transition: transform var(--transition-fast); }
-        .country-select.open .country-trigger ion-icon { transform: rotate(180deg); }
-        .country-dropdown {
-            position: absolute;
-            top: calc(100% + 8px);
-            left: 0;
-            right: 0;
-            background: var(--bg-card-hover);
+        .country-chip {
+            padding: 7px 14px;
+            border-radius: 20px;
             border: 1px solid var(--border-color);
-            border-radius: var(--radius-sm);
-            max-height: 220px;
-            overflow-y: auto;
-            z-index: 100;
-            display: none;
-            box-shadow: var(--shadow-lg);
-        }
-        .country-select.open .country-dropdown { display: block; animation: fadeInDown 0.25s ease; }
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .country-option {
-            padding: 12px 16px;
-            cursor: pointer;
-            font-size: 13px;
+            background: rgba(255,255,255,0.02);
+            font-family: var(--font-arabic);
+            font-size: 11px;
             color: var(--text-secondary);
-            border-bottom: 1px solid rgba(255,255,255,0.03);
+            cursor: pointer;
             transition: all var(--transition-fast);
+            white-space: nowrap;
         }
-        .country-option:hover { background: rgba(255,255,255,0.05); color: var(--text-primary); }
-        .country-option.selected { color: var(--neon-green); background: var(--neon-green-dim); font-weight: 600; }
+        .country-chip:hover { border-color: var(--border-glow); color: var(--text-primary); }
+        .country-chip.selected {
+            background: var(--neon-cyan-dim);
+            border-color: var(--neon-cyan);
+            color: var(--neon-cyan);
+            font-weight: 600;
+        }
 
         /* Location Display */
         .location-pill {
             display: flex;
             align-items: center;
             gap: 8px;
-            margin-top: 14px;
+            margin-top: 12px;
             padding: 10px 14px;
             background: rgba(0, 255, 170, 0.05);
             border-radius: 25px;
@@ -401,73 +480,95 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            padding: 40px;
-            gap: 16px;
+            padding: 35px;
+            gap: 14px;
         }
         .pulse-ring {
-            width: 50px;
-            height: 50px;
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
             border: 3px solid var(--neon-green);
             animation: pulseRing 1.5s cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
         }
         @keyframes pulseRing {
             0% { transform: scale(0.8); opacity: 1; }
-            100% { transform: scale(1.4); opacity: 0; }
+            100% { transform: scale(1.5); opacity: 0; }
         }
         .loading-text {
             color: var(--text-secondary);
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 500;
-            letter-spacing: 0.3px;
+            font-family: var(--font-arabic);
         }
 
-        /* Results Enhanced */
+        /* Results */
         .results-section { margin-top: 4px; }
         .results-toolbar {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 16px;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 14px;
             padding: 12px 16px;
             background: var(--bg-card);
             border-radius: var(--radius-md);
             border: 1px solid var(--border-color);
         }
-        .results-count { font-size: 14px; font-weight: 600; color: var(--text-primary); }
-        .results-count span { color: var(--neon-green); font-size: 18px; }
+        .results-count {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-primary);
+            font-family: var(--font-arabic);
+        }
+        .results-count span { color: var(--neon-green); font-size: 16px; }
+        .copy-all-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 7px 14px;
+            border-radius: 20px;
+            border: 1px solid var(--neon-purple);
+            background: var(--neon-purple-dim);
+            color: var(--neon-purple);
+            font-size: 11px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            font-family: var(--font-arabic);
+        }
+        .copy-all-btn:hover { box-shadow: var(--shadow-neon-purple); }
 
         /* Result Card */
         .result-card {
             background: var(--bg-card);
             border: 1px solid var(--border-color);
             border-radius: var(--radius-md);
-            padding: 18px;
-            margin-bottom: 12px;
+            padding: 16px;
+            margin-bottom: 10px;
             transition: all var(--transition-smooth);
             position: relative;
         }
         .result-card:hover { border-color: var(--border-glow); box-shadow: var(--shadow-md); }
         .result-card .accent-line {
             position: absolute;
-            left: 0;
+            right: 0;
             top: 16px;
             bottom: 16px;
             width: 3px;
             background: linear-gradient(180deg, var(--neon-green), var(--neon-cyan));
-            border-radius: 0 3px 3px 0;
+            border-radius: 3px 0 0 3px;
         }
         .result-header-row {
             display: flex;
             align-items: flex-start;
-            gap: 10px;
-            margin-bottom: 8px;
-            padding-left: 12px;
+            gap: 8px;
+            margin-bottom: 6px;
+            padding-right: 12px;
         }
         .result-icon {
-            width: 32px;
-            height: 32px;
+            width: 30px;
+            height: 30px;
             border-radius: 8px;
             background: var(--neon-green-dim);
             display: flex;
@@ -475,57 +576,73 @@
             justify-content: center;
             flex-shrink: 0;
         }
-        .result-icon ion-icon { color: var(--neon-green); font-size: 16px; }
+        .result-icon ion-icon { color: var(--neon-green); font-size: 15px; }
         .result-name {
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 600;
             color: var(--text-primary);
             flex: 1;
-            line-height: 1.3;
+            line-height: 1.4;
+            font-family: var(--font-arabic);
+        }
+        .filter-tags {
+            display: flex;
+            gap: 4px;
+            flex-wrap: wrap;
+            margin-top: 4px;
         }
         .no-website-tag {
             display: inline-flex;
             align-items: center;
-            gap: 4px;
-            padding: 3px 10px;
-            border-radius: 20px;
+            gap: 3px;
+            padding: 2px 8px;
+            border-radius: 15px;
             background: rgba(255, 159, 10, 0.1);
             border: 1px solid rgba(255, 159, 10, 0.3);
             color: var(--neon-orange);
-            font-size: 10px;
+            font-size: 9px;
             font-weight: 600;
             white-space: nowrap;
-            margin-top: 4px;
+            font-family: var(--font-arabic);
+        }
+        .has-phone-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 3px;
+            padding: 2px 8px;
+            border-radius: 15px;
+            background: rgba(0, 255, 170, 0.1);
+            border: 1px solid rgba(0, 255, 170, 0.3);
+            color: var(--neon-green);
+            font-size: 9px;
+            font-weight: 600;
+            font-family: var(--font-arabic);
         }
         .result-details {
-            padding-left: 54px;
-            margin-bottom: 14px;
+            padding-right: 42px;
+            margin-bottom: 12px;
         }
         .result-address {
-            font-size: 12px;
+            font-size: 11px;
             color: var(--text-secondary);
             line-height: 1.6;
-            margin-bottom: 4px;
-        }
-        .result-coords {
-            font-size: 10px;
-            color: var(--text-tertiary);
-            font-family: 'SF Mono', 'Fira Code', monospace;
+            margin-bottom: 2px;
+            font-family: var(--font-arabic);
         }
         .result-actions {
             display: flex;
-            gap: 8px;
-            padding-left: 12px;
+            gap: 6px;
+            padding-right: 12px;
             flex-wrap: wrap;
         }
         .pill-btn {
             display: inline-flex;
             align-items: center;
-            gap: 5px;
-            padding: 9px 14px;
-            border-radius: 20px;
-            font-family: var(--font-system);
-            font-size: 12px;
+            gap: 4px;
+            padding: 7px 12px;
+            border-radius: 18px;
+            font-family: var(--font-arabic);
+            font-size: 11px;
             font-weight: 500;
             border: 1px solid var(--border-color);
             background: rgba(255,255,255,0.02);
@@ -537,20 +654,34 @@
         .pill-btn.phone-btn:hover { border-color: var(--neon-cyan); color: var(--neon-cyan); background: var(--neon-cyan-dim); }
         .pill-btn.copy-btn:hover { border-color: var(--neon-purple); color: var(--neon-purple); background: var(--neon-purple-dim); }
         .pill-btn.map-btn:hover { border-color: var(--neon-green); color: var(--neon-green); background: var(--neon-green-dim); }
-        .pill-btn ion-icon { font-size: 14px; }
+        .pill-btn ion-icon { font-size: 13px; }
 
-        /* Toast Enhanced */
+        /* Error */
+        .error-state {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px;
+            background: var(--neon-pink-dim);
+            border: 1px solid var(--neon-pink);
+            border-radius: var(--radius-sm);
+            color: var(--neon-pink);
+            font-size: 12px;
+            font-family: var(--font-arabic);
+        }
+
+        /* Toast */
         .toast {
             position: fixed;
-            top: 24px;
+            top: 20px;
             left: 50%;
             transform: translateX(-50%) translateY(-120px);
             background: var(--bg-card-hover);
             border: 1px solid var(--border-glow);
             border-radius: var(--radius-sm);
-            padding: 14px 28px;
+            padding: 12px 24px;
             color: var(--text-primary);
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 600;
             z-index: 9999;
             box-shadow: var(--shadow-lg);
@@ -558,100 +689,28 @@
             opacity: 0;
             transition: all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
             backdrop-filter: blur(20px);
+            font-family: var(--font-arabic);
+            text-align: center;
+            white-space: nowrap;
         }
         .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
         .toast.error { border-color: var(--neon-pink); color: var(--neon-pink); }
 
-        /* Modal */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0,0,0,0.85);
-            z-index: 1000;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            backdrop-filter: blur(4px);
-        }
-        .modal-overlay.open { display: flex; }
-        .modal-content {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius-lg);
-            padding: 24px;
-            width: 100%;
-            max-width: 420px;
-            box-shadow: var(--shadow-lg);
-            animation: modalIn 0.3s ease;
-        }
-        @keyframes modalIn {
-            from { opacity: 0; transform: scale(0.9) translateY(20px); }
-            to { opacity: 1; transform: scale(1) translateY(0); }
-        }
-        .modal-title {
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 16px;
-            color: var(--text-primary);
-        }
-        .modal-input {
-            width: 100%;
-            padding: 14px 16px;
-            border-radius: var(--radius-sm);
-            border: 1.5px solid var(--border-color);
-            background: rgba(255,255,255,0.03);
-            color: var(--text-primary);
-            font-family: var(--font-system);
-            font-size: 14px;
-            outline: none;
-            margin-bottom: 16px;
-            transition: all var(--transition-fast);
-        }
-        .modal-input:focus { border-color: var(--neon-cyan); box-shadow: 0 0 20px rgba(0, 212, 255, 0.1); }
-        .modal-input::placeholder { color: var(--text-tertiary); }
-
-        /* Copy All Button */
-        .copy-all-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 8px 16px;
-            border-radius: 20px;
-            border: 1px solid var(--neon-purple);
-            background: var(--neon-purple-dim);
-            color: var(--neon-purple);
-            font-size: 12px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all var(--transition-fast);
-            font-family: var(--font-system);
-        }
-        .copy-all-btn:hover { box-shadow: var(--shadow-neon-purple); background: rgba(180, 76, 255, 0.2); }
-
-        .error-state {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 16px;
-            background: var(--neon-pink-dim);
-            border: 1px solid var(--neon-pink);
-            border-radius: var(--radius-sm);
-            color: var(--neon-pink);
-            font-size: 13px;
-        }
-
+        /* Responsive */
         @media (max-width: 480px) {
-            .app-container { padding: 12px 10px 30px; }
-            .glass-card { padding: 16px; border-radius: var(--radius-md); }
-            .app-title { font-size: 26px; }
-            .btn { padding: 11px 16px; font-size: 13px; }
-            .result-name { font-size: 14px; }
-            .result-details { padding-left: 42px; }
-            .result-actions { padding-left: 8px; }
+            .app-container { padding: 10px 8px 30px; }
+            .glass-card { padding: 14px; border-radius: var(--radius-md); }
+            .app-title { font-size: 24px; }
+            .btn { padding: 10px 14px; font-size: 12px; }
+            .hero-input { font-size: 13px; }
+            .result-name { font-size: 13px; }
+            .result-details { padding-right: 34px; }
+            .result-actions { padding-right: 8px; }
+            .hero-submit-btn { padding: 10px 16px; font-size: 12px; }
+        }
+        @media (min-width: 768px) {
+            .app-container { padding: 24px 20px 50px; }
+            .glass-card { padding: 24px; }
         }
     </style>
 </head>
@@ -666,32 +725,127 @@
                 </div>
             </div>
             <h1 class="app-title">MapClinics Pro</h1>
-            <p class="app-subtitle">Find businesses without websites — No credit card needed</p>
+            <p class="app-subtitle">ابحث عن أي مكان تريده بسهولة واحترافية</p>
             <div class="provider-badge">
                 <ion-icon name="checkmark-circle-outline"></ion-icon>
-                Powered by Geoapify — Free Tier (3000 req/day)
+                يدعم جميع دول العالم - بحث باللغة العربية
             </div>
         </header>
 
-        <!-- Location Section -->
+        <!-- Hero Search - الكلمة المفتاحية -->
+        <div class="hero-search">
+            <div class="hero-input-wrapper">
+                <div class="hero-input-icon">
+                    <ion-icon name="search-outline"></ion-icon>
+                </div>
+                <input type="text" class="hero-input" id="keywordInput" 
+                    placeholder="اكتب ما تبحث عنه... مثال: عيادة، مستشفى، صيدلية، مطعم، فندق..."
+                    onkeydown="if(event.key==='Enter')startSearch()"
+                    autocomplete="off">
+                <button class="hero-submit-btn" onclick="startSearch()" id="searchBtn">
+                    <ion-icon name="arrow-forward-outline"></ion-icon>
+                    بحث
+                </button>
+            </div>
+            <div class="keyword-suggestions" id="keywordSuggestions">
+                <span class="keyword-tag" onclick="setKeyword('عيادة')">عيادة</span>
+                <span class="keyword-tag" onclick="setKeyword('مستشفى')">مستشفى</span>
+                <span class="keyword-tag" onclick="setKeyword('صيدلية')">صيدلية</span>
+                <span class="keyword-tag" onclick="setKeyword('دكتور')">دكتور</span>
+                <span class="keyword-tag" onclick="setKeyword('مختبر')">مختبر</span>
+                <span class="keyword-tag" onclick="setKeyword('مطعم')">مطعم</span>
+                <span class="keyword-tag" onclick="setKeyword('فندق')">فندق</span>
+                <span class="keyword-tag" onclick="setKeyword('مقهى')">مقهى</span>
+                <span class="keyword-tag" onclick="setKeyword('بنك')">بنك</span>
+                <span class="keyword-tag" onclick="setKeyword('مدرسة')">مدرسة</span>
+                <span class="keyword-tag" onclick="setKeyword('مسجد')">مسجد</span>
+                <span class="keyword-tag" onclick="setKeyword('سوبر ماركت')">سوبر ماركت</span>
+            </div>
+        </div>
+
+        <!-- Filters -->
+        <div class="glass-card">
+            <div class="card-header">
+                <div class="card-header-icon cyan">
+                    <ion-icon name="options-outline"></ion-icon>
+                </div>
+                <div>
+                    <div class="card-label">خيارات متقدمة</div>
+                    <div class="card-title">تخصيص البحث</div>
+                </div>
+            </div>
+
+            <!-- Toggle Filters -->
+            <div class="filter-toggle-row">
+                <div class="filter-toggle active" id="filterNoWebsite" onclick="toggleFilter('noWebsite')">
+                    <ion-icon name="globe-outline"></ion-icon>
+                    بدون موقع إلكتروني
+                </div>
+                <div class="filter-toggle active" id="filterHasPhone" onclick="toggleFilter('hasPhone')">
+                    <ion-icon name="call-outline"></ion-icon>
+                    لديه رقم هاتف
+                </div>
+            </div>
+
+            <!-- Radius -->
+            <div class="slider-group">
+                <div class="slider-label">
+                    <span>نطاق البحث</span>
+                    <span class="slider-value" id="radiusValue">10 كم</span>
+                </div>
+                <input type="range" min="1" max="100" value="10" id="radiusSlider" oninput="updateRadius(this.value)">
+            </div>
+
+            <!-- Country Selection -->
+            <div class="card-title" style="margin-bottom: 8px;">الدولة</div>
+            <div class="country-chips" id="countryChips">
+                <span class="country-chip selected" data-code="" onclick="selectCountryChip(this, '', 'كل الدول')">🌍 كل الدول</span>
+                <span class="country-chip" data-code="eg" onclick="selectCountryChip(this, 'eg', 'مصر')">🇪🇬 مصر</span>
+                <span class="country-chip" data-code="sa" onclick="selectCountryChip(this, 'sa', 'السعودية')">🇸🇦 السعودية</span>
+                <span class="country-chip" data-code="ae" onclick="selectCountryChip(this, 'ae', 'الإمارات')">🇦🇪 الإمارات</span>
+                <span class="country-chip" data-code="kw" onclick="selectCountryChip(this, 'kw', 'الكويت')">🇰🇼 الكويت</span>
+                <span class="country-chip" data-code="qa" onclick="selectCountryChip(this, 'qa', 'قطر')">🇶🇦 قطر</span>
+                <span class="country-chip" data-code="bh" onclick="selectCountryChip(this, 'bh', 'البحرين')">🇧🇭 البحرين</span>
+                <span class="country-chip" data-code="om" onclick="selectCountryChip(this, 'om', 'عمان')">🇴🇲 عمان</span>
+                <span class="country-chip" data-code="jo" onclick="selectCountryChip(this, 'jo', 'الأردن')">🇯🇴 الأردن</span>
+                <span class="country-chip" data-code="lb" onclick="selectCountryChip(this, 'lb', 'لبنان')">🇱🇧 لبنان</span>
+                <span class="country-chip" data-code="iq" onclick="selectCountryChip(this, 'iq', 'العراق')">🇮🇶 العراق</span>
+                <span class="country-chip" data-code="ly" onclick="selectCountryChip(this, 'ly', 'ليبيا')">🇱🇾 ليبيا</span>
+                <span class="country-chip" data-code="tn" onclick="selectCountryChip(this, 'tn', 'تونس')">🇹🇳 تونس</span>
+                <span class="country-chip" data-code="dz" onclick="selectCountryChip(this, 'dz', 'الجزائر')">🇩🇿 الجزائر</span>
+                <span class="country-chip" data-code="ma" onclick="selectCountryChip(this, 'ma', 'المغرب')">🇲🇦 المغرب</span>
+                <span class="country-chip" data-code="sd" onclick="selectCountryChip(this, 'sd', 'السودان')">🇸🇩 السودان</span>
+                <span class="country-chip" data-code="ye" onclick="selectCountryChip(this, 'ye', 'اليمن')">🇾🇪 اليمن</span>
+                <span class="country-chip" data-code="sy" onclick="selectCountryChip(this, 'sy', 'سوريا')">🇸🇾 سوريا</span>
+                <span class="country-chip" data-code="ps" onclick="selectCountryChip(this, 'ps', 'فلسطين')">🇵🇸 فلسطين</span>
+                <span class="country-chip" data-code="us" onclick="selectCountryChip(this, 'us', 'أمريكا')">🇺🇸 أمريكا</span>
+                <span class="country-chip" data-code="gb" onclick="selectCountryChip(this, 'gb', 'بريطانيا')">🇬🇧 بريطانيا</span>
+                <span class="country-chip" data-code="de" onclick="selectCountryChip(this, 'de', 'ألمانيا')">🇩🇪 ألمانيا</span>
+                <span class="country-chip" data-code="fr" onclick="selectCountryChip(this, 'fr', 'فرنسا')">🇫🇷 فرنسا</span>
+                <span class="country-chip" data-code="tr" onclick="selectCountryChip(this, 'tr', 'تركيا')">🇹🇷 تركيا</span>
+                <span class="country-chip" data-code="in" onclick="selectCountryChip(this, 'in', 'الهند')">🇮🇳 الهند</span>
+            </div>
+        </div>
+
+        <!-- Location -->
         <div class="glass-card">
             <div class="card-header">
                 <div class="card-header-icon green">
                     <ion-icon name="location-outline"></ion-icon>
                 </div>
                 <div>
-                    <div class="card-label">Step 1</div>
-                    <div class="card-title">Set Search Location</div>
+                    <div class="card-label">موقع البحث</div>
+                    <div class="card-title">تحديد نقطة المركز</div>
                 </div>
             </div>
             <div class="btn-row">
                 <button class="btn btn-primary" onclick="getCurrentLocation()" id="btnLocation">
                     <ion-icon name="navigate-outline"></ion-icon>
-                    Use My GPS
+                    موقعي الحالي
                 </button>
-                <button class="btn btn-cyan" onclick="openLocationModal()">
+                <button class="btn btn-cyan" onclick="searchByCity()">
                     <ion-icon name="search-outline"></ion-icon>
-                    Search City
+                    البحث بمدينة
                 </button>
             </div>
             <div class="location-pill" id="locationDisplay" style="display:none;">
@@ -700,62 +854,18 @@
             </div>
         </div>
 
-        <!-- Search Filters -->
-        <div class="glass-card">
-            <div class="card-header">
-                <div class="card-header-icon cyan">
-                    <ion-icon name="options-outline"></ion-icon>
-                </div>
-                <div>
-                    <div class="card-label">Step 2</div>
-                    <div class="card-title">What are you looking for?</div>
-                </div>
-            </div>
-            
-            <div class="chip-scroll" id="typeChips">
-                <div class="chip active" data-type="doctor">Doctor</div>
-                <div class="chip" data-type="hospital">Hospital</div>
-                <div class="chip" data-type="clinic">Clinic</div>
-                <div class="chip" data-type="pharmacy">Pharmacy</div>
-                <div class="chip" data-type="dentist">Dentist</div>
-                <div class="chip" data-type="physiotherapist">Physiotherapy</div>
-                <div class="chip" data-type="veterinary">Veterinary</div>
-                <div class="chip" data-type="laboratory">Laboratory</div>
-            </div>
-
-            <div class="slider-group">
-                <div class="slider-label">
-                    <span>Search Radius</span>
-                    <span class="slider-value" id="radiusValue">10 km</span>
-                </div>
-                <input type="range" min="1" max="100" value="10" id="radiusSlider" oninput="updateRadius(this.value)">
-            </div>
-
-            <div class="country-select" id="countrySelect">
-                <div class="country-trigger" onclick="toggleCountryDropdown()">
-                    <span id="selectedCountry">🇪🇬 Egypt (EG)</span>
-                    <ion-icon name="chevron-down-outline"></ion-icon>
-                </div>
-                <div class="country-dropdown" id="countryDropdown"></div>
-            </div>
-        </div>
-
-        <!-- Action -->
-        <div style="margin-bottom: 16px;">
-            <button class="btn btn-primary btn-block" onclick="startSearch()" id="searchBtn">
-                <ion-icon name="search-circle-outline" style="font-size:20px;"></ion-icon>
-                Find Places Without Websites
-            </button>
-            <button class="btn btn-danger btn-block" onclick="stopSearch()" id="stopBtn" style="display:none; margin-top:10px;">
+        <!-- Stop Button -->
+        <div style="margin-bottom: 14px;">
+            <button class="btn btn-danger btn-block" onclick="stopSearch()" id="stopBtn" style="display:none;">
                 <ion-icon name="stop-circle-outline"></ion-icon>
-                Stop Searching
+                إيقاف البحث
             </button>
         </div>
 
         <!-- Loading -->
         <div class="loading-pulse" id="loadingContainer" style="display:none;">
             <div class="pulse-ring"></div>
-            <p class="loading-text">Searching for places without websites...</p>
+            <p class="loading-text">جاري البحث عن الأماكن...</p>
         </div>
 
         <!-- Error -->
@@ -766,30 +876,14 @@
             <div class="results-toolbar">
                 <div class="results-count">
                     <ion-icon name="list-outline" style="color:var(--neon-green); vertical-align:middle;"></ion-icon>
-                    Found <span id="resultsCount">0</span> place(s) without website
+                    تم العثور على <span id="resultsCount">0</span> مكان
                 </div>
                 <button class="copy-all-btn" onclick="copyAllResults()">
                     <ion-icon name="documents-outline"></ion-icon>
-                    Copy All
+                    نسخ الكل
                 </button>
             </div>
             <div id="resultsList"></div>
-        </div>
-    </div>
-
-    <!-- Location Modal -->
-    <div class="modal-overlay" id="locationModal">
-        <div class="modal-content">
-            <h3 class="modal-title">Search Location</h3>
-            <input type="text" class="modal-input" id="locationSearchInput" placeholder="e.g., Cairo, London, Dubai..." 
-                onkeydown="if(event.key==='Enter')searchLocationByName()">
-            <div class="btn-row">
-                <button class="btn btn-sm" onclick="closeLocationModal()" style="background:transparent;border-color:var(--border-color);color:var(--text-secondary);">Cancel</button>
-                <button class="btn btn-cyan btn-sm" onclick="searchLocationByName()">
-                    <ion-icon name="search-outline"></ion-icon>
-                    Find Location
-                </button>
-            </div>
         </div>
     </div>
 
@@ -798,126 +892,119 @@
 
     <script>
         // ============================================================
-        // CONFIGURATION
+        // CONFIGURATION - ضع مفتاح Geoapify هنا
         // ============================================================
-        const GEOAPIFY_API_KEY = '445e3847a0c54e529b7a3fb9d5700fa1'; // ⚠️ قم بتغيير هذا المفتاح
-
-        // ============================================================
-        // CATEGORY MAPPING (Geoapify categories)
-        // ============================================================
-        const categoryMap = {
-            'doctor': 'healthcare.doctor',
-            'hospital': 'healthcare.hospital',
-            'clinic': 'healthcare.clinic_or_medical_centre',
-            'pharmacy': 'healthcare.pharmacy',
-            'dentist': 'healthcare.dentist',
-            'physiotherapist': 'healthcare.physiotherapist',
-            'veterinary': 'healthcare.veterinary',
-            'laboratory': 'healthcare.laboratory'
-        };
-
-        // ============================================================
-        // COUNTRIES
-        // ============================================================
-        const countries = [
-            { code: 'eg', name: 'Egypt', flag: '🇪🇬' },
-            { code: 'sa', name: 'Saudi Arabia', flag: '🇸🇦' },
-            { code: 'ae', name: 'UAE', flag: '🇦🇪' },
-            { code: 'kw', name: 'Kuwait', flag: '🇰🇼' },
-            { code: 'qa', name: 'Qatar', flag: '🇶🇦' },
-            { code: 'bh', name: 'Bahrain', flag: '🇧🇭' },
-            { code: 'om', name: 'Oman', flag: '🇴🇲' },
-            { code: 'jo', name: 'Jordan', flag: '🇯🇴' },
-            { code: 'lb', name: 'Lebanon', flag: '🇱🇧' },
-            { code: 'iq', name: 'Iraq', flag: '🇮🇶' },
-            { code: 'ly', name: 'Libya', flag: '🇱🇾' },
-            { code: 'tn', name: 'Tunisia', flag: '🇹🇳' },
-            { code: 'dz', name: 'Algeria', flag: '🇩🇿' },
-            { code: 'ma', name: 'Morocco', flag: '🇲🇦' },
-            { code: 'sd', name: 'Sudan', flag: '🇸🇩' },
-            { code: 'us', name: 'United States', flag: '🇺🇸' },
-            { code: 'gb', name: 'United Kingdom', flag: '🇬🇧' },
-            { code: 'de', name: 'Germany', flag: '🇩🇪' },
-            { code: 'fr', name: 'France', flag: '🇫🇷' },
-            { code: 'it', name: 'Italy', flag: '🇮🇹' },
-            { code: 'es', name: 'Spain', flag: '🇪🇸' },
-            { code: 'ca', name: 'Canada', flag: '🇨🇦' },
-            { code: 'in', name: 'India', flag: '🇮🇳' },
-            { code: 'br', name: 'Brazil', flag: '🇧🇷' },
-            { code: 'jp', name: 'Japan', flag: '🇯🇵' },
-            { code: 'tr', name: 'Turkey', flag: '🇹🇷' }
-        ];
+        const GEOAPIFY_API_KEY = '445e3847a0c54e529b7a3fb9d5700fa1'; // ⚠️ غير هذا المفتاح
 
         // ============================================================
         // STATE
         // ============================================================
         let state = {
+            keyword: '',
             userLocation: null,
             locationName: '',
-            searchType: 'doctor',
             radius: 10,
-            countryCode: 'eg',
-            countryName: 'Egypt',
+            countryCode: '', // فارغ = كل الدول
+            countryName: 'كل الدول',
             results: [],
             isLoading: false,
-            abortController: null
+            abortController: null,
+            filters: {
+                noWebsite: true,  // فلتر بدون موقع إلكتروني
+                hasPhone: true     // فلتر لديه رقم هاتف
+            }
         };
 
         // ============================================================
         // INIT
         // ============================================================
         function init() {
-            renderCountryDropdown();
-            setupChipListeners();
-            updateRadius(state.radius);
-            console.log('🗺️ MapClinics Pro (Geoapify) Ready');
+            // محاولة تحديد موقع المستخدم تلقائياً
+            tryAutoDetectLocation();
+            console.log('🗺️ MapClinics Pro Arabic Version Ready ✅');
+            console.log('🌍 يدعم جميع دول العالم');
+            console.log('🔍 بحث بالكلمات المفتاحية بالعربية');
         }
 
-        // ============================================================
-        // COUNTRY DROPDOWN
-        // ============================================================
-        function renderCountryDropdown() {
-            const dropdown = document.getElementById('countryDropdown');
-            dropdown.innerHTML = countries.map(c => `
-                <div class="country-option ${c.code === state.countryCode ? 'selected' : ''}" 
-                     onclick="selectCountry('${c.code}', '${c.name}', '${c.flag}')">
-                    ${c.flag} ${c.name} (${c.code.toUpperCase()})
-                </div>
-            `).join('');
+        async function tryAutoDetectLocation() {
+            if (!navigator.geolocation) return;
+            
+            navigator.geolocation.getCurrentPosition(
+                (pos) => {
+                    state.userLocation = { lat: pos.coords.latitude, lng: pos.coords.longitude };
+                    state.locationName = 'موقعي الحالي';
+                    updateLocationDisplay();
+                    
+                    // محاولة تحديد الدولة تلقائياً
+                    reverseGeocodeCountry(pos.coords.latitude, pos.coords.longitude);
+                },
+                () => {
+                    // فشل تحديد الموقع - لا مشكلة
+                    console.log('لم نتمكن من تحديد موقعك تلقائياً');
+                },
+                { enableHighAccuracy: false, timeout: 5000, maximumAge: 600000 }
+            );
         }
 
-        function toggleCountryDropdown() {
-            document.getElementById('countrySelect').classList.toggle('open');
-        }
-
-        function selectCountry(code, name, flag) {
-            state.countryCode = code;
-            state.countryName = name;
-            document.getElementById('selectedCountry').textContent = `${flag} ${name} (${code.toUpperCase()})`;
-            document.getElementById('countrySelect').classList.remove('open');
-            document.querySelectorAll('.country-option').forEach(el => {
-                el.classList.toggle('selected', el.textContent.includes(code.toUpperCase()));
-            });
-        }
-
-        document.addEventListener('click', (e) => {
-            const select = document.getElementById('countrySelect');
-            if (select && !select.contains(e.target)) {
-                select.classList.remove('open');
-            }
-        });
-
-        // ============================================================
-        // CHIPS
-        // ============================================================
-        function setupChipListeners() {
-            document.getElementById('typeChips').addEventListener('click', (e) => {
-                if (e.target.classList.contains('chip')) {
-                    document.querySelectorAll('#typeChips .chip').forEach(c => c.classList.remove('active'));
-                    e.target.classList.add('active');
-                    state.searchType = e.target.dataset.type;
+        async function reverseGeocodeCountry(lat, lng) {
+            try {
+                const url = `https://api.geoapify.com/v1/geocode/reverse?lat=${lat}&lon=${lng}&format=json&apiKey=${GEOAPIFY_API_KEY}`;
+                const res = await fetch(url);
+                const data = await res.json();
+                if (data.results && data.results[0]) {
+                    const cc = data.results[0].country_code?.toLowerCase();
+                    if (cc) {
+                        state.countryCode = cc;
+                        state.countryName = data.results[0].country || cc.toUpperCase();
+                        updateCountryChips();
+                        showToast(`تم تحديد موقعك: ${state.countryName}`);
+                    }
                 }
+            } catch (e) {
+                console.log('تعذر تحديد الدولة تلقائياً');
+            }
+        }
+
+        function updateCountryChips() {
+            document.querySelectorAll('.country-chip').forEach(chip => {
+                const code = chip.dataset.code;
+                chip.classList.toggle('selected', code === state.countryCode);
             });
+        }
+
+        // ============================================================
+        // KEYWORD
+        // ============================================================
+        function setKeyword(keyword) {
+            state.keyword = keyword;
+            document.getElementById('keywordInput').value = keyword;
+            
+            // تحديث حالة الـ tags
+            document.querySelectorAll('.keyword-tag').forEach(tag => {
+                tag.classList.toggle('active', tag.textContent.trim() === keyword);
+            });
+            
+            // بدء البحث تلقائياً إذا كان الموقع محدداً
+            if (state.userLocation) {
+                startSearch();
+            } else {
+                showToast('الرجاء تحديد الموقع أولاً');
+            }
+        }
+
+        // ============================================================
+        // FILTERS
+        // ============================================================
+        function toggleFilter(filterName) {
+            state.filters[filterName] = !state.filters[filterName];
+            
+            const elementId = filterName === 'noWebsite' ? 'filterNoWebsite' : 'filterHasPhone';
+            document.getElementById(elementId).classList.toggle('active', state.filters[filterName]);
+            
+            // إعادة عرض النتائج إذا كانت موجودة
+            if (state.results.length > 0) {
+                renderResults();
+            }
         }
 
         // ============================================================
@@ -925,7 +1012,20 @@
         // ============================================================
         function updateRadius(value) {
             state.radius = parseInt(value);
-            document.getElementById('radiusValue').textContent = `${value} km`;
+            document.getElementById('radiusValue').textContent = `${value} كم`;
+        }
+
+        // ============================================================
+        // COUNTRY CHIP
+        // ============================================================
+        function selectCountryChip(chipElement, code, name) {
+            state.countryCode = code;
+            state.countryName = name;
+            
+            document.querySelectorAll('.country-chip').forEach(c => c.classList.remove('selected'));
+            chipElement.classList.add('selected');
+            
+            showToast(`تم اختيار: ${name}`);
         }
 
         // ============================================================
@@ -933,62 +1033,64 @@
         // ============================================================
         function getCurrentLocation() {
             if (!navigator.geolocation) {
-                showToast('Geolocation not supported by browser', 'error');
+                showToast('متصفحك لا يدعم تحديد الموقع', 'error');
                 return;
             }
+            
             const btn = document.getElementById('btnLocation');
             btn.disabled = true;
-            btn.innerHTML = '<ion-icon name="sync-outline"></ion-icon> Locating...';
+            btn.innerHTML = '<ion-icon name="sync-outline"></ion-icon> جاري التحديد...';
 
             navigator.geolocation.getCurrentPosition(
                 (pos) => {
                     state.userLocation = { lat: pos.coords.latitude, lng: pos.coords.longitude };
-                    state.locationName = 'My Current Location';
+                    state.locationName = 'موقعي الحالي';
                     updateLocationDisplay();
                     btn.disabled = false;
-                    btn.innerHTML = '<ion-icon name="navigate-outline"></ion-icon> Use My GPS';
-                    showToast('Location acquired ✓');
+                    btn.innerHTML = '<ion-icon name="navigate-outline"></ion-icon> موقعي الحالي';
+                    showToast('تم تحديد موقعك بنجاح ✓');
+                    
+                    // تحديد الدولة
+                    reverseGeocodeCountry(pos.coords.latitude, pos.coords.longitude);
                 },
                 (err) => {
-                    showToast('GPS failed. Please enable location.', 'error');
+                    showToast('فشل تحديد الموقع. الرجاء تفعيل GPS', 'error');
                     btn.disabled = false;
-                    btn.innerHTML = '<ion-icon name="navigate-outline"></ion-icon> Use My GPS';
+                    btn.innerHTML = '<ion-icon name="navigate-outline"></ion-icon> موقعي الحالي';
                 },
                 { enableHighAccuracy: true, timeout: 15000, maximumAge: 0 }
             );
         }
 
-        function openLocationModal() {
-            document.getElementById('locationModal').classList.add('open');
-            setTimeout(() => document.getElementById('locationSearchInput').focus(), 100);
-        }
-
-        function closeLocationModal() {
-            document.getElementById('locationModal').classList.remove('open');
-            document.getElementById('locationSearchInput').value = '';
-        }
-
-        async function searchLocationByName() {
-            const query = document.getElementById('locationSearchInput').value.trim();
-            if (!query) { showToast('Enter a city or address', 'error'); return; }
-
+        async function searchByCity() {
+            const city = prompt('🏙️ أدخل اسم المدينة للبحث فيها:\n\nمثال: القاهرة، دبي، لندن، الرياض...');
+            if (!city || !city.trim()) return;
+            
+            showToast(`جاري البحث عن: ${city}...`);
+            
             try {
-                const url = `https://api.geoapify.com/v1/geocode/search?text=${encodeURIComponent(query)}&format=json&apiKey=${GEOAPIFY_API_KEY}`;
+                const url = `https://api.geoapify.com/v1/geocode/search?text=${encodeURIComponent(city.trim())}&format=json&limit=1&apiKey=${GEOAPIFY_API_KEY}`;
                 const res = await fetch(url);
                 const data = await res.json();
-
-                if (data.results && data.results.length > 0) {
+                
+                if (data.results && data.results[0]) {
                     const r = data.results[0];
                     state.userLocation = { lat: r.lat, lng: r.lon };
-                    state.locationName = r.formatted || query;
+                    state.locationName = r.formatted || city;
+                    
+                    if (r.country_code) {
+                        state.countryCode = r.country_code.toLowerCase();
+                        state.countryName = r.country || r.country_code;
+                        updateCountryChips();
+                    }
+                    
                     updateLocationDisplay();
-                    closeLocationModal();
-                    showToast('Location found ✓');
+                    showToast(`تم العثور على: ${state.locationName} ✓`);
                 } else {
-                    showToast('Location not found. Try another search.', 'error');
+                    showToast('لم يتم العثور على المدينة. جرب بحثاً آخر', 'error');
                 }
             } catch (e) {
-                showToast('Search failed. Check connection.', 'error');
+                showToast('فشل البحث. تحقق من الاتصال', 'error');
             }
         }
 
@@ -996,14 +1098,34 @@
             const d = document.getElementById('locationDisplay');
             const t = document.getElementById('locationText');
             d.style.display = 'flex';
-            t.textContent = state.locationName.length > 55 ? state.locationName.substring(0, 55) + '...' : state.locationName;
+            t.textContent = state.locationName.length > 50 
+                ? state.locationName.substring(0, 50) + '...' 
+                : state.locationName;
         }
 
         // ============================================================
         // MAIN SEARCH
         // ============================================================
         async function startSearch() {
-            if (!state.userLocation) { showToast('Set a location first', 'error'); return; }
+            // الحصول على الكلمة المفتاحية من input إذا كانت فارغة
+            const inputKeyword = document.getElementById('keywordInput').value.trim();
+            if (inputKeyword) {
+                state.keyword = inputKeyword;
+                document.querySelectorAll('.keyword-tag').forEach(tag => {
+                    tag.classList.toggle('active', tag.textContent.trim() === inputKeyword);
+                });
+            }
+            
+            if (!state.keyword) {
+                showToast('الرجاء كتابة كلمة البحث أولاً', 'error');
+                document.getElementById('keywordInput').focus();
+                return;
+            }
+            
+            if (!state.userLocation) {
+                showToast('الرجاء تحديد الموقع أولاً', 'error');
+                return;
+            }
 
             state.isLoading = true;
             state.results = [];
@@ -1013,20 +1135,31 @@
             clearResults();
 
             try {
-                const allPlaces = await fetchAllPages();
-                const withoutWebsite = allPlaces.filter(p => !p.website);
-                state.results = withoutWebsite;
+                const allPlaces = await searchGeoapifyPlaces();
+                
+                // تطبيق الفلاتر
+                let filtered = allPlaces;
+                
+                if (state.filters.noWebsite) {
+                    filtered = filtered.filter(p => !p.website);
+                }
+                
+                if (state.filters.hasPhone) {
+                    filtered = filtered.filter(p => p.phone && p.phone.trim() !== '');
+                }
+                
+                state.results = filtered;
                 renderResults();
 
-                if (withoutWebsite.length === 0) {
+                if (filtered.length === 0) {
                     document.getElementById('resultsSection').style.display = 'none';
-                    showToast('All places found have websites.', 'error');
+                    showToast('لم يتم العثور على نتائج تطابق بحثك', 'error');
                 } else {
-                    showToast(`✓ Found ${withoutWebsite.length} place(s) without website`);
+                    showToast(`✓ تم العثور على ${filtered.length} مكان`);
                 }
             } catch (e) {
                 if (e.name !== 'AbortError') {
-                    showError(e.message);
+                    showError(e.message || 'فشل البحث');
                 }
             } finally {
                 state.isLoading = false;
@@ -1035,43 +1168,51 @@
             }
         }
 
-        async function fetchAllPages() {
-            let allPlaces = [];
-            const category = categoryMap[state.searchType] || 'healthcare';
+        async function searchGeoapifyPlaces() {
             const radiusMeters = state.radius * 1000;
-
-            // Use Geoapify Places API with category filter and bias
-            const bias = `proximity:${state.userLocation.lng},${state.userLocation.lat}`;
             const filter = `circle:${state.userLocation.lng},${state.userLocation.lat},${radiusMeters}`;
+            const bias = `proximity:${state.userLocation.lng},${state.userLocation.lat}`;
 
             const url = new URL('https://api.geoapify.com/v2/places');
-            url.searchParams.set('categories', category);
             url.searchParams.set('filter', filter);
             url.searchParams.set('bias', bias);
             url.searchParams.set('limit', '50');
             url.searchParams.set('apiKey', GEOAPIFY_API_KEY);
+            url.searchParams.set('lang', 'ar'); // دعم العربية في النتائج
+
+            // إضافة الكلمة المفتاحية للبحث
+            if (state.keyword) {
+                url.searchParams.set('name', state.keyword);
+            }
 
             const res = await fetch(url.toString(), { signal: state.abortController?.signal });
+            
+            if (!res.ok) {
+                const errData = await res.json().catch(() => ({}));
+                throw new Error(errData.message || `خطأ ${res.status}`);
+            }
+
             const data = await res.json();
-
-            if (!res.ok) throw new Error(data.message || `API Error ${res.status}`);
-
-            const places = (data.features || []).map(f => ({
-                id: f.properties.place_id || Math.random().toString(),
-                name: f.properties.name || 'Unknown',
-                address: f.properties.formatted || f.properties.address_line1 || '',
+            
+            return (data.features || []).map(f => ({
+                id: f.properties.place_id || Math.random().toString(36),
+                name: f.properties.name || 'غير معروف',
+                address: f.properties.formatted || f.properties.address_line1 || f.properties.address_line2 || '',
                 phone: f.properties.phone || f.properties.contact?.phone || null,
-                website: f.properties.website || f.properties.datasource?.raw?.website || null,
+                website: f.properties.website || f.properties.datasource?.raw?.website || f.properties.datasource?.raw?.contact?.website || null,
+                email: f.properties.email || f.properties.contact?.email || null,
                 lat: f.properties.lat,
                 lng: f.properties.lon,
-                category: f.properties.categories || [],
-                street: f.properties.street || '',
+                categories: f.properties.categories || [],
                 city: f.properties.city || '',
                 country: f.properties.country || '',
+                street: f.properties.street || '',
+                housenumber: f.properties.housenumber || '',
+                postcode: f.properties.postcode || '',
+                opening_hours: f.properties.opening_hours || null,
+                rating: f.properties.rank?.popularity || null,
+                datasource: f.properties.datasource?.raw?.name || null
             }));
-
-            allPlaces = allPlaces.concat(places);
-            return allPlaces;
         }
 
         function stopSearch() {
@@ -1079,7 +1220,7 @@
                 state.abortController.abort();
                 state.isLoading = false;
                 updateUISearching(false);
-                showToast('Search cancelled');
+                showToast('تم إيقاف البحث');
             }
         }
 
@@ -1087,7 +1228,7 @@
         // UI HELPERS
         // ============================================================
         function updateUISearching(searching) {
-            document.getElementById('searchBtn').style.display = searching ? 'none' : 'block';
+            document.getElementById('searchBtn').style.display = searching ? 'none' : 'inline-flex';
             document.getElementById('stopBtn').style.display = searching ? 'flex' : 'none';
             document.getElementById('loadingContainer').style.display = searching ? 'flex' : 'none';
             if (searching) {
@@ -1114,9 +1255,20 @@
             const list = document.getElementById('resultsList');
             const count = document.getElementById('resultsCount');
 
-            count.textContent = state.results.length;
+            // تطبيق الفلاتر على النتائج الحالية
+            let displayResults = [...state.results];
+            
+            if (state.filters.noWebsite) {
+                displayResults = displayResults.filter(p => !p.website);
+            }
+            
+            if (state.filters.hasPhone) {
+                displayResults = displayResults.filter(p => p.phone && p.phone.trim() !== '');
+            }
 
-            if (state.results.length === 0) {
+            count.textContent = displayResults.length;
+
+            if (displayResults.length === 0) {
                 section.style.display = 'none';
                 return;
             }
@@ -1124,7 +1276,9 @@
             section.style.display = 'block';
             document.getElementById('errorState').style.display = 'none';
 
-            list.innerHTML = state.results.map((p, i) => `
+            list.innerHTML = displayResults.map((p, i) => {
+                const originalIndex = state.results.indexOf(p);
+                return `
                 <div class="result-card">
                     <div class="accent-line"></div>
                     <div class="result-header-row">
@@ -1133,34 +1287,32 @@
                         </div>
                         <div>
                             <div class="result-name">${esc(p.name)}</div>
-                            <span class="no-website-tag">
-                                <ion-icon name="globe-outline"></ion-icon> No Website
-                            </span>
+                            <div class="filter-tags">
+                                ${!p.website ? `<span class="no-website-tag"><ion-icon name="globe-outline"></ion-icon> بدون موقع</span>` : ''}
+                                ${p.phone ? `<span class="has-phone-tag"><ion-icon name="call-outline"></ion-icon> ${p.phone}</span>` : ''}
+                            </div>
                         </div>
                     </div>
                     <div class="result-details">
-                        <div class="result-address">${esc(p.address || 'No address')}</div>
-                        <div class="result-coords">📍 ${p.lat?.toFixed(5)}, ${p.lng?.toFixed(5)}</div>
+                        <div class="result-address">📍 ${esc(p.address || 'لا يوجد عنوان')}</div>
+                        ${p.city ? `<div class="result-address" style="margin-top:2px;">🏙️ ${esc(p.city)}${p.country ? ' - ' + esc(p.country) : ''}</div>` : ''}
+                        ${p.opening_hours ? `<div class="result-address" style="margin-top:2px; color: var(--neon-green);">🕐 ${esc(p.opening_hours)}</div>` : ''}
                     </div>
                     <div class="result-actions">
                         ${p.phone ? `
                             <a href="tel:${p.phone}" class="pill-btn phone-btn">
-                                <ion-icon name="call-outline"></ion-icon> ${p.phone}
+                                <ion-icon name="call-outline"></ion-icon> اتصال
                             </a>
-                        ` : `
-                            <span class="pill-btn" style="opacity:0.4; cursor:default;">
-                                <ion-icon name="call-outline"></ion-icon> No Phone
-                            </span>
-                        `}
-                        <button class="pill-btn copy-btn" onclick="copySingle(${i})">
-                            <ion-icon name="copy-outline"></ion-icon> Copy
+                        ` : ''}
+                        <button class="pill-btn copy-btn" onclick="copySingle(${originalIndex})">
+                            <ion-icon name="copy-outline"></ion-icon> نسخ
                         </button>
                         <a href="https://www.google.com/maps?q=${p.lat},${p.lng}" target="_blank" class="pill-btn map-btn">
-                            <ion-icon name="map-outline"></ion-icon> Open in Maps
+                            <ion-icon name="map-outline"></ion-icon> فتح في الخرائط
                         </a>
                     </div>
                 </div>
-            `).join('');
+            `}).join('');
         }
 
         // ============================================================
@@ -1168,34 +1320,44 @@
         // ============================================================
         function copySingle(i) {
             const p = state.results[i];
-            const text = `Name: ${p.name}
-Address: ${p.address || 'N/A'}
-Phone: ${p.phone || 'N/A'}
-Website: None
-Coordinates: ${p.lat}, ${p.lng}`;
+            if (!p) return;
+            
+            const text = `الاسم: ${p.name}
+العنوان: ${p.address || 'غير متوفر'}
+الهاتف: ${p.phone || 'غير متوفر'}
+الموقع الإلكتروني: ${p.website || 'لا يوجد'}
+المدينة: ${p.city || 'غير معروف'}
+الدولة: ${p.country || 'غير معروف'}
+الإحداثيات: ${p.lat}, ${p.lng}`;
+            
             copyToClipboard(text);
-            showToast('Copied ✓');
+            showToast('تم النسخ ✓');
         }
 
         function copyAllResults() {
             if (!state.results.length) return;
-            let text = `═══ MapClinics Pro Report ═══
-Total: ${state.results.length} place(s) without website
-Location: ${state.locationName}
-Type: ${state.searchType} | Radius: ${state.radius}km | Country: ${state.countryName}
+            
+            let text = `═══ تقرير MapClinics Pro ═══
+إجمالي النتائج: ${state.results.length}
+الكلمة المفتاحية: ${state.keyword}
+الموقع: ${state.locationName}
+نطاق البحث: ${state.radius} كم
+الدولة: ${state.countryName}
+الفلتر: ${state.filters.noWebsite ? 'بدون موقع إلكتروني' : 'الكل'} | ${state.filters.hasPhone ? 'لديه هاتف' : 'الكل'}
 ═══════════════════════════\n\n`;
 
             state.results.forEach((p, i) => {
                 text += `[${i+1}] ${p.name}
-📍 ${p.address || 'N/A'}
-📞 ${p.phone || 'N/A'}
-🌐 No website
+📍 ${p.address || 'لا يوجد عنوان'}
+📞 ${p.phone || 'لا يوجد هاتف'}
+🌐 ${p.website || 'لا يوجد موقع إلكتروني'}
+🏙️ ${p.city || ''} - ${p.country || ''}
 📌 ${p.lat}, ${p.lng}
 ───────────────────────────\n`;
             });
 
             copyToClipboard(text);
-            showToast(`Copied ${state.results.length} results ✓`);
+            showToast(`تم نسخ ${state.results.length} نتيجة ✓`);
         }
 
         async function copyToClipboard(text) {
@@ -1221,7 +1383,7 @@ Type: ${state.searchType} | Radius: ${state.radius}km | Country: ${state.country
             toast.textContent = msg;
             toast.className = 'toast ' + type + ' show';
             clearTimeout(toastTimer);
-            toastTimer = setTimeout(() => toast.classList.remove('show'), 2500);
+            toastTimer = setTimeout(() => toast.classList.remove('show'), 3000);
         }
 
         // ============================================================
@@ -1235,9 +1397,17 @@ Type: ${state.searchType} | Radius: ${state.radius}km | Country: ${state.country
         }
 
         // ============================================================
-        // START
+        // STARTUP
         // ============================================================
         document.addEventListener('DOMContentLoaded', init);
+
+        console.log('%c🗺️ MapClinics Pro %cالنسخة العربية المتطورة',
+            'color: #00FFAA; font-size: 18px; font-weight: bold;',
+            'color: #8E8E93; font-size: 14px;');
+        console.log('%c✅ بحث بالكلمات المفتاحية | 🌍 جميع دول العالم | 📱 متجاوب مع الهواتف',
+            'color: #FFD60A;');
+        console.log('%c⚙️ ضع مفتاح Geoapify الخاص بك للتشغيل',
+            'color: #FF9F0A;');
     </script>
 </body>
 </html>
